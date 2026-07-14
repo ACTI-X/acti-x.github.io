@@ -1,0 +1,15 @@
+{
+  "name": "ACTI-X",
+  "short_name": "ACTI-X",
+  "description": "Advanced Cyber Threat Information eXchange",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#dd8a2f",
+  "background_color": "#f6f1e6",
+  "display": "browser"
+}

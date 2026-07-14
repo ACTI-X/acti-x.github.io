@@ -1,0 +1,60 @@
+baseURL: https://acti-x.github.io/
+locale: en-us
+title: ACTI-X Docs
+
+module:
+  imports:
+    - path: github.com/imfing/hextra
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    noClasses: false
+
+menu:
+  main:
+    - name: Docs
+      pageRef: /docs
+      weight: 1
+    - name: Search
+      weight: 4
+      params:
+        type: search
+    - name: GitHub
+      weight: 5
+      url: "https://github.com/ACTI-X"
+      params:
+        icon: github
+    - name: Theme
+      weight: 6
+      params:
+        type: theme-toggle
+
+params:
+  description: >-
+    Advanced Cyber Threat Information eXchange — a European cybersecurity
+    project that strengthens how critical infrastructures and essential
+    services detect, understand, and respond to cyber threats.
+
+  navbar:
+    displayTitle: true
+    displayLogo: true
+    logo:
+      path: images/logo.png
+      width: 26
+      height: 26
+
+  # Light/dark switch in the navbar; follows the OS preference by default.
+  theme:
+    default: system
+    displayToggle: true
+
+  footer:
+    enable: true
+    displayCopyright: false
+    displayPoweredBy: false
+
+  editURL:
+    enable: false
