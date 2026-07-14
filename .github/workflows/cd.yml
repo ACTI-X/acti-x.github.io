@@ -4,31 +4,49 @@ on:
   push:
     branches:
       - main
-    # Review gh actions docs if you want to further define triggers, paths, etc
-    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
+  # Allows running this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Allow only one concurrent deployment, but don't cancel a run already
+# in progress: let it finish so production is never left half-deployed
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   build:
-    name: Build Docusaurus
+    name: Build Hugo site
     runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: '0.161.1'
+      HUGO_ENVIRONMENT: production
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
 
-      - name: Install dependencies
-        run: npm ci
+      # Go is required to fetch the Hextra theme (Hugo module)
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Install Hugo CLI
+        run: |
+          wget -O ${{ runner.temp }}/hugo.deb \
+            https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb
+          sudo dpkg -i ${{ runner.temp }}/hugo.deb
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
       - name: Build website
-        run: npm run build
+        run: hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
 
       - name: Upload Build Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: build
+          path: public
 
   deploy:
     name: Deploy to GitHub Pages
