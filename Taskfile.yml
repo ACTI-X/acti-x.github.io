@@ -1,0 +1,39 @@
+version: '3'
+
+vars:
+  PORT: '{{.PORT | default "1313"}}'
+
+tasks:
+  default:
+    desc: Start the local dev server (alias of dev).
+    cmds:
+      - task: dev
+
+  dev:
+    desc: Start the local dev server with live reload, including drafts. Override port with PORT=xxxx.
+    cmds:
+      - hugo server --buildDrafts --disableFastRender --port {{.PORT}} --baseURL http://localhost:{{.PORT}}/
+
+  build:
+    desc: Build the production site into ./public (same flags as CI).
+    env:
+      HUGO_ENVIRONMENT: production
+    cmds:
+      - hugo --gc --minify
+
+  preview:
+    desc: Build the production site and serve it locally (no drafts).
+    cmds:
+      - hugo server --environment production --port {{.PORT}} --baseURL http://localhost:{{.PORT}}/
+
+  update:
+    desc: Update the Hextra theme to the latest version.
+    cmds:
+      - hugo mod get -u github.com/imfing/hextra
+      - hugo mod tidy
+
+  clean:
+    desc: Remove build output and Hugo caches.
+    cmds:
+      - rm -rf public resources/_gen .hugo_build.lock hugo_stats.json
+    silent: true

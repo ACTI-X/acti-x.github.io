@@ -18,17 +18,26 @@ menu:
     - name: Docs
       pageRef: /docs
       weight: 1
-    - name: Search
+    - name: Threat Model
+      pageRef: /docs/threat-model
+      weight: 2
+    - name: Architecture
+      pageRef: /docs/architecture
+      weight: 3
+    - name: Modules
+      pageRef: /docs/modules
       weight: 4
+    - name: Search
+      weight: 5
       params:
         type: search
     - name: GitHub
-      weight: 5
+      weight: 6
       url: "https://github.com/ACTI-X"
       params:
         icon: github
     - name: Theme
-      weight: 6
+      weight: 7
       params:
         type: theme-toggle
 
