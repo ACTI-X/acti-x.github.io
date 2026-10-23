@@ -3,10 +3,6 @@ title: Bot Detection and Application Monitoring
 weight: 3
 ---
 
-
-![image](placeholder/img/bot_module_logo.jpg)
-![image](placeholder/img/bot_module_schema.jpg)
-
 # Description
 
 The ACTI-X Bot Detection and Application Monitoring module is designed to identify, characterise, and monitor **automated abuse** targeting web applications and APIs. The module focuses on **detecting malicious bot activity** through large-scale application **log analysis** as well as **behavioral profiling** logs. It leverages advanced behavioural analytics and machine-learning techniques to distinguish legitimate users from abusive automated actors. Particular attention is given to high-impact attack scenarios such as denial-of-inventory, that can disrupt business operations, degrade service availability, and generate significant financial losses. 

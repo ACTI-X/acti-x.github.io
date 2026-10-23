@@ -3,9 +3,6 @@ title: Incident Investigation and Response
 weight: 4
 ---
 
-![image](placeholder/img/iir_module_logo.jpg)
-![image](placeholder/img/iir_module_schema.jpg)
-
 **From an alert to an evidence-backed investigation, a validated verdict and a controlled response.**
 
 # Description
